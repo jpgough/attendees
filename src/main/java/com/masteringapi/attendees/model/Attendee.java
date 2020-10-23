@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Attendee {
     private Integer id;
-    private String firstName;
-    private String lastName;
+    private String givenName;
+    private String surname;
     private String email;
 
     public Integer getId() {
@@ -16,20 +16,20 @@ public class Attendee {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getGivenName() {
+        return givenName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {
