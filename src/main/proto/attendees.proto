@@ -18,5 +18,5 @@ message AttendeeResponse {
 }
 
 service AttendeesService {
-  rpc getAttendees(AttendeesRequest) returns (AttendeeResponse);
+  rpc getAttendees(AttendeesRequest) returns (AttendeeResponse) {}
 }
