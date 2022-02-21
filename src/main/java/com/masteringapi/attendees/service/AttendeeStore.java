@@ -9,8 +9,6 @@ import java.util.List;
 @Component
 public class AttendeeStore {
 
-    private List<List<Attendee>> memoryLeak = new ArrayList<>();
-
     public List<Attendee> getAttendees() {
         List<Attendee> attendees = new ArrayList<>();
         Attendee attendee = new Attendee();
@@ -31,8 +29,6 @@ public class AttendeeStore {
         attendee.setSurname("Bryant");
         attendee.setEmail("bryant@mail.com");
         attendees.add(attendee);
-
-        memoryLeak.add(attendees);
 
         return attendees;
     }
