@@ -10,7 +10,7 @@ message Attendee {
   string givenName = 2;
   string surname = 3;
   string email = 4;
-
+  string topLanguage = 5;
 }
 
 message AttendeeResponse {

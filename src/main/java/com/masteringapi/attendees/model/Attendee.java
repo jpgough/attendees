@@ -1,11 +1,8 @@
 package com.masteringapi.attendees.model;
 
-import javax.annotation.RegEx;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class Attendee {
     private Integer id;
@@ -21,7 +18,7 @@ public class Attendee {
     @NotNull
     @Size(max=254)
     private String email;
-    private String displayName;
+    private String topLanguage;
 
     public Integer getId() {
         return id;
@@ -68,11 +65,11 @@ public class Attendee {
         return Objects.hash(id);
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getTopLanguage() {
+        return topLanguage;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setTopLanguage(String topLanguage) {
+        this.topLanguage = topLanguage;
     }
 }

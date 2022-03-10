@@ -16,18 +16,21 @@ public class AttendeeStore {
         attendee.setGivenName("Jim");
         attendee.setSurname("Gough");
         attendee.setEmail("gough@mail.com");
+        attendee.setTopLanguage("Java");
         attendees.add(attendee);
         attendee = new Attendee();
         attendee.setId(2);
         attendee.setGivenName("Matt");
         attendee.setSurname("Auburn");
         attendee.setEmail("auburn@mail.com");
+        attendee.setTopLanguage("Typescript");
         attendees.add(attendee);
         attendee = new Attendee();
         attendee.setId(3);
         attendee.setGivenName("Daniel");
         attendee.setSurname("Bryant");
         attendee.setEmail("bryant@mail.com");
+        attendee.setTopLanguage("go");
         attendees.add(attendee);
 
         return attendees;

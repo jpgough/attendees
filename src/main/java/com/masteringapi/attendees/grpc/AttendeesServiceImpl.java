@@ -25,6 +25,7 @@ public class AttendeesServiceImpl extends AttendeesServiceGrpc.AttendeesServiceI
                     .setGivenName(attendee.getGivenName())
                     .setSurname(attendee.getSurname())
                     .setEmail(attendee.getEmail())
+                    .setTopLanguage(attendee.getTopLanguage())
                     .build();
             responseBuilder.addAttendees(grpcAttendee);
         }
