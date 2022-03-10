@@ -21,7 +21,6 @@ public class Attendee {
     @NotNull
     @Size(max=254)
     private String email;
-    private String displayName;
 
     public Integer getId() {
         return id;
@@ -66,13 +65,5 @@ public class Attendee {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
     }
 }
