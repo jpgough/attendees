@@ -7,7 +7,7 @@ This repository contains the code base for a very basic attendees API which mode
 * On port 8080 as a REST over HTTP service
 * On port 9090 as a gRPC service
 
-There is also [a version 2 branch](https://github.com/jpgough/attendees/tree/v2) containing backwards compatible changes to v1 (not semvar).
+There is also [a version 2 branch](https://github.com/jpgough/attendees/tree/v2) containing backwards compatible changes to v1 (not semver).
 
 The two builds are provided as docker images for easy use in the rest of this guide.
 These will be used in the YAML Examples for use with Istio. 
