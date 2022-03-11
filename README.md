@@ -40,6 +40,57 @@ Running this command will set up `kubectl` to connect to the cluster for you, ma
 
 ### Deploying Istio 
 
+Using Helm is probably the best way of deploying Istio onto AKS, with full instruction [here](https://istio.io/latest/docs/setup/install/helm/).
+Once this has completed, you may wish to turn on autoside car injection for the default namespace:
+
+`kubectl label namespace default istio-injection=enabled --overwrite`
+
 ### Deploying and Testing the APIs
+
+Now Istio is up and running it is time to deploy our services and run a few tests against them. 
+To create an interactive shell running inside your cluster, your can use the following command.
+
+`kubectl run my-shell --rm -i --tty --image ubuntu -- bash`
+
+Keep this to one side and we will use it to test the HTTP and gRPC deployments in k8s.
+
+#### Deploying The Container
+
+Using kubectl we can deploy version 1 and 2 of our image using [attendees-deployment.yaml](/operations/attendees-deployment.yaml):
+
+`kubectl create -f attendees-deployment.yaml`
+
+You can test whether this is up and running by using 
+
+`kubectl get pods` and seeing a similar output to below
+
+```shell
+NAME                                READY   STATUS    RESTARTS   AGE
+attendees-api-v1-6c75f87dfb-q6kb8   2/2     Running   0          5h3m
+attendees-api-v2-6d99ff76f4-lclcn   2/2     Running   0          5h3m
+my-shell                            2/2     Running   0          5h16m
+```
+
+The 2/2 of two is important to see, as this will be both the running attendees container and the Istio envoy sidecar.
+
+#### Testing HTTP Traffic
+
+Pods are ephemeral and therefore need a service to act as the conduit within the cluster DNS for routing to those service.
+We can deploy a service using the [http-service.yaml](/operations/http-service.yaml) and we can test it using our my-shell on the cluster.
+
+`kubectl create -f http-service.yaml`
+
+In the my-shell interactive pod:
+```shell
+apt update
+apt install curl
+curl http://attendees-http/attendees
+```
+
+You should see that you get responses from both v1 and v2 of the service, this is standard k8s routing. 
+Shortly we will use Istio to start coordinating the traffic to the different services
+
+#### Testing gRPC Traffic
+
 
 ### Exploring Traffic Management
