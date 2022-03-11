@@ -92,5 +92,31 @@ Shortly we will use Istio to start coordinating the traffic to the different ser
 
 #### Testing gRPC Traffic
 
+Now deploy the service using the [grpc-service.yaml](/operations/grpc-service.yaml) and test using the following in my-shell"
+
+```shell
+apt install wget
+wget grpcurl_1.8.6_linux_x86_64.tar.gz
+tar xvfz grpcurl_1.8.6_linux_x86_64.tar.gz
+./grpcurl --plaintext attendees-grpc:80 com.masteringapi.attendees.grpc.server.AttendeesService/getAttendees
+```
+
+This should now respond with the information from the gPRC API. 
 
 ### Exploring Traffic Management
+
+In the [operations/istio](/operations/istio) folder you will find a few items to get start with experimenting with the types of service mesh routing.
+We will look at two examples and then you can try your own:
+
+First lets introduce the [destination-rule.yaml](/operations/istio/destination-rule.yaml), which will allow us to identify the two versions.
+You can find out more about [Destination Rules here](https://istio.io/latest/docs/reference/config/networking/destination-rule/).
+
+`kubectl create -f destination-rule.yaml`
+
+Testing the HTTP service now will show a random routing rather than a round-robin routing that we saw previously.
+We can tweak exactly hor routing occurs using a [Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/).
+This allows us to create rules around how traffic is routed, in this example we split the load 90:10 across v1 and v2.
+
+`kubectl create -f weighted-virtual-service.yaml`
+
+There is also a further example that introduces [fault-virtual-service](/operations/istio/fault-virtual-service.yaml).ß
