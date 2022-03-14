@@ -40,7 +40,6 @@ spec:
       containers:
         - name: attendees
           image: jpgough/attendees:v2
-          imagePullPolicy: Always
           ports:
             - containerPort: 8080
             - containerPort: 9090
