@@ -96,7 +96,7 @@ Now deploy the service using the [grpc-service.yaml](/operations/grpc-service.ya
 
 ```shell
 apt install wget
-wget grpcurl_1.8.6_linux_x86_64.tar.gz
+wget https://github.com/fullstorydev/grpcurl/releases/download/v1.8.6/grpcurl_1.8.6_linux_x86_64.tar.gz
 tar xvfz grpcurl_1.8.6_linux_x86_64.tar.gz
 ./grpcurl --plaintext attendees-grpc:80 com.masteringapi.attendees.grpc.server.AttendeesService/getAttendees
 ```
