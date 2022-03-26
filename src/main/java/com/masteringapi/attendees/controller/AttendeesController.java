@@ -37,8 +37,16 @@ public class AttendeesController {
 
     @GetMapping("/attendees/{id}")
     @ResponseBody
-    public Attendee getAttendee(@PathVariable Integer id) {
-        return store.getAttendees().get(id);
+    public ResponseEntity<Attendee> getAttendee(@PathVariable Integer id) {
+        CacheControl cacheControl = CacheControl.noCache();
+        cacheControl.noStore();
+        cacheControl.mustRevalidate();
+        cacheControl.proxyRevalidate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CACHE_CONTROL, cacheControl.getHeaderValue());
+
+        return ResponseEntity.ok().headers(headers).body(store.getAttendees().get(id));
     }
 
     @GetMapping("/external")
