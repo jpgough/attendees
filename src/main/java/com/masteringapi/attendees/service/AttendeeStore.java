@@ -12,19 +12,19 @@ public class AttendeeStore {
     public List<Attendee> getAttendees() {
         List<Attendee> attendees = new ArrayList<>();
         Attendee attendee = new Attendee();
-        attendee.setId(1);
+        attendee.setId(0);
         attendee.setGivenName("Jim");
         attendee.setSurname("Gough");
         attendee.setEmail("gough@mail.com");
         attendees.add(attendee);
         attendee = new Attendee();
-        attendee.setId(2);
+        attendee.setId(1);
         attendee.setGivenName("Matt");
         attendee.setSurname("Auburn");
         attendee.setEmail("auburn@mail.com");
         attendees.add(attendee);
         attendee = new Attendee();
-        attendee.setId(3);
+        attendee.setId(2);
         attendee.setGivenName("Daniel");
         attendee.setSurname("Bryant");
         attendee.setEmail("bryant@mail.com");

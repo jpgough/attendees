@@ -1,11 +1,13 @@
 package com.masteringapi.attendees.controller;
 
+import com.masteringapi.attendees.model.Attendee;
 import com.masteringapi.attendees.model.AttendeeResponse;
 import com.masteringapi.attendees.service.AttendeeStore;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -23,6 +25,12 @@ public class AttendeesController {
     @ApiOperation(value = "Retrieve a list of all attendees stored within the system", nickname = "getAttendees")
     public AttendeeResponse getAttendees() {
         return new AttendeeResponse(store.getAttendees());
+    }
+
+    @GetMapping("/attendees/{id}")
+    @ResponseBody
+    public Attendee getAttendee(@PathVariable Integer id) {
+        return store.getAttendees().get(id);
     }
 
     @GetMapping("/external")
